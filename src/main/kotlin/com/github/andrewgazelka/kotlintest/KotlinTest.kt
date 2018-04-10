@@ -11,7 +11,7 @@ class KotlinTest : JavaPlugin() {
     override fun onEnable() {
         instance = this
         Config.reload()
-        message("$green Enabled")
+        server.scheduler.scheduleSyncDelayedTask(this, { message("$green Enabled") }, Config.period_tick.toLong())
     }
 
     override fun onDisable() {

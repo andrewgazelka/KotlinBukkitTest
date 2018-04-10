@@ -1,15 +1,19 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-
-
-
 group 'com.github.andrewgazelka'
 version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
     mavenCentral()
     maven {
+        name 'Spigot'
         url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+    maven {
+        name 'BungeeCord'
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
     }
     maven {
         url  "https://dl.bintray.com/kotlin/exposed"
@@ -18,18 +22,20 @@ repositories {
 
 dependencies {
     compile group: 'org.spigotmc', name: 'spigot-api', version: '1.8.8-R0.1-SNAPSHOT'
+    compile 'org.bukkit:bukkit:1.8.8-R0.1-SNAPSHOT' // The Bukkit API with no shadowing.
     compile 'org.jetbrains.exposed:exposed:0.10.2'
 }
-
 
 buildscript {
     ext.kotlin_version = '1.2.30'
 
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
     }
 }
 
@@ -85,4 +91,10 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+shadowJar {
+    dependencies {
+        include(dependency("org.jetbrains.kotlin:kotlin-stdlib"))
+    }
 }

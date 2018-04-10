@@ -5,8 +5,12 @@ import java.io.File
 
 object Config {
 
-    private val file = File("config.yml")
-    val cm = ConfigManager(file)
+    private val file: File = File(KotlinTest.instance.dataFolder,"config.yml")
+    val cm: ConfigManager
+
+    init {
+        cm = ConfigManager(file)
+    }
 
     var period_tick = 1
     var start_message = "Hello"
