@@ -24,7 +24,7 @@ class KotlinTest : JavaPlugin() {
         val location2 = Location(world, 5.0, 210.0, 5.0)
 
         for (loc in location1..location2) {
-            world.spawnFallingBlock(loc, Material.WOOL, (0 randTo 15).toByte())
+            world.spawnFallingBlock(loc, Material.WOOL, (0 randTo 16).toByte())
             message("$yellow Dropping wool! (${loc.blockX},${loc.blockY},${loc.blockZ})")
         }
     }

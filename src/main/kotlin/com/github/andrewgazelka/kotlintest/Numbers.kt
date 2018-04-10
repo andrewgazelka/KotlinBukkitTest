@@ -11,6 +11,9 @@ infix fun Int.to(to: Int): IntProgression {
     return IntProgression.fromClosedRange(this, to, -1)
 }
 
+/**
+ * [from,to)
+ */
 infix fun Int.randTo(to: Int): Int {
-    return rand.nextInt(to+1-this)+this
+    return rand.nextInt(to-this)+this
 }
