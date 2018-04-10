@@ -1,0 +1,7 @@
+name: KotlinTest
+version: 1.0-SNAPSHOT
+description: A bukkit plugin made with Kotlin. A learning experience for the creator.
+author: andrewgazelka
+
+
+main: com.github.andrewgazelka.kotlintest.KotlinTest
