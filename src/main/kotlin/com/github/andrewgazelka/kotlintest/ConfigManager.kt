@@ -8,6 +8,8 @@ class ConfigManager(private val file: File) {
     val yaml = YamlConfiguration()
 
     init {
+        file.parentFile.mkdirs()
+        file.createNewFile()
         load()
     }
 

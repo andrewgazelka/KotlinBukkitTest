@@ -4,7 +4,7 @@ import java.io.File
 
 object Config {
 
-    private val file = File("abc.txt")
+    private val file = File("config.yml")
     private val cm = ConfigManager(file)
 
     var period_tick = 1 //TODO: this is quite bad... a default value shouldn't need to be set
