@@ -6,5 +6,5 @@ val red = ChatColor.RED
 val green = ChatColor.GREEN
 
 fun message(message: String) {
-    KotlinTest.server.broadcastMessage(message)
+    KotlinTest.instance.server.broadcastMessage(message)
 }
