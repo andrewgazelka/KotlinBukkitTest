@@ -13,10 +13,10 @@ class KotlinTest : JavaPlugin() {
     override fun onEnable() {
         instance = this
         Config.reload()
-        dropWool()
+        drop(Material.TNT,doDamage = true)
     }
 
-    private fun dropWool() {
+    private fun drop(material: Material, dataLow: Int = 0, dataHigh: Int = 1, doDamage: Boolean = false) {
 
         val world = server.worlds[0]
 
@@ -24,8 +24,9 @@ class KotlinTest : JavaPlugin() {
         val location2 = Location(world, 5.0, 210.0, 5.0)
 
         for (loc in location1..location2) {
-            world.spawnFallingBlock(loc, Material.WOOL, (0 randTo 16).toByte())
-            message("$yellow Dropping wool! (${loc.blockX},${loc.blockY},${loc.blockZ})")
+            val fallingBlock = world.spawnFallingBlock(loc, material, (dataLow randTo dataHigh).toByte())
+            fallingBlock.setHurtEntities(doDamage)
+            message("$yellow Dropping ${material.name}! (${loc.blockX},${loc.blockY},${loc.blockZ})")
         }
     }
 
