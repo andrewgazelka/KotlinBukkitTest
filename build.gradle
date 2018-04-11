@@ -18,12 +18,17 @@ repositories {
     maven {
         url  "https://dl.bintray.com/kotlin/exposed"
     }
+    maven {
+        url = "http://maven.sk89q.com/repo/"
+    }
 }
 
 dependencies {
     compile group: 'org.spigotmc', name: 'spigot-api', version: '1.8.8-R0.1-SNAPSHOT'
     compile 'org.bukkit:bukkit:1.8.8-R0.1-SNAPSHOT' // The Bukkit API with no shadowing.
-    compile 'org.jetbrains.exposed:exposed:0.10.2'
+//    compile 'org.jetbrains.exposed:exposed:0.10.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "com.sk89q.worldedit:worldedit-bukkit:6.1.4-SNAPSHOT"
 }
 
 buildscript {
@@ -77,14 +82,6 @@ group 'com.oneshotmc'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-}
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
